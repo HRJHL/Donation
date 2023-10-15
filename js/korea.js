@@ -1,22 +1,36 @@
 window.onload = function() {
-    drawMap('#container');
+    drawMap('#gis-container', '#image-container');
 };
 
 // 지도 그리기
-function drawMap(target) {
+function drawMap(mapTarget, imageTarget) {
     var width = 700; // 지도의 넓이
     var height = 700; // 지도의 높이
     var initialScale = 5500; // 확대시킬 값
     var initialX = -11900; // 초기 위치값 X
     var initialY = 4050; // 초기 위치값 Y
     var labels;
-    
+
     // 팝업을 표시할 div 추가
-    var popup = d3.select(target)
+    var popup = d3.select(mapTarget)
         .append('div')
         .attr('class', 'popup')
         .style('display', 'none')
         .style('position', 'absolute');
+
+    // 클릭한 지역에 대한 이미지 및 설명을 표시할 div 컨테이너
+    var imagePopup = d3.select(imageTarget).append('div')
+        .attr('class', 'image-popup')
+        .style('display', 'none')
+        .style('position', 'relative');
+
+    // 이미지를 표시할 요소 선택
+    var image = imagePopup.append('img')
+        .style('width', '750px'); // 이미지 크기 조정
+
+    // 설명을 표시할 요소 선택
+    var description = imagePopup.append('div')
+        .attr('class', 'description');
 
     var projection = d3.geo
         .mercator()
@@ -31,7 +45,7 @@ function drawMap(target) {
         .on('zoom', zoom);
 
     var svg = d3
-        .select(target)
+        .select(mapTarget)
         .append('svg')
         .attr('width', width + 'px')
         .attr('height', height + 'px')
@@ -63,11 +77,56 @@ function drawMap(target) {
             .on('mouseover', function(d) {
                 var name = d.properties.name;
                 var code = d.properties.code;
-                // 팝업 내용 설정 (이 부분을 원하는 내용으로 수정)
-                
-                var popupContent = '지역 이름: ' + name + '<br>코드: ' + code;
                 if(name =="서울특별시"){
                     var popupContent = '서울입니다';
+                }
+                if(name =="경기도"){
+                    var popupContent = '경기입니다';
+                }
+                if(name =="인천광역시"){
+                    var popupContent = '인천입니다';
+                }
+                if(name =="강원도"){
+                    var popupContent = '강원입니다';
+                }
+                if(name =="세종특별자치시"){
+                    var popupContent = '세종입니다';
+                }
+                if(name =="충청북도"){
+                    var popupContent = '충청입니다';
+                }
+                if(name =="충청남도"){
+                    var popupContent = '충남입니다';
+                }
+                if(name =="대전광역시"){
+                    var popupContent = '대전입니다';
+                }
+                if(name =="대구광역시"){
+                    var popupContent = '대구입니다';
+                }
+                if(name =="전라북도"){
+                    var popupContent = '전라입니다';
+                }
+                if(name =="전라남도"){
+                    var popupContent = '전북입니다';
+                }
+                if(name =="광주광역시"){
+                    var popupContent = '광주입니다';
+                }
+                if(name =="경상북도"){
+                    var popupContent = '경상입니다';
+                }
+                if(name =="경상남도"){
+                    var popupContent = '경남입니다';
+                }
+                if(name =="울산광역시"){
+                    var popupContent = '울산입니다';
+                }
+                if(name =="부산광역시"){
+                    var popupContent = '부산입니다';
+                }
+                if(name =="제주특별자치도"){
+                    var popupContent = '제주입니다';
                 }
 
                 // 팝업 위치 설정
@@ -79,6 +138,11 @@ function drawMap(target) {
                     .style('left', x + 'px')
                     .style('top', y + 'px')
                     .style('display', 'block');
+            })
+            .on('click', function(d) {
+                // 클릭한 지역에 대한 이미지 및 설명 표시
+                var name = d.properties.name;
+                displayImagePopup(name);
             })
             .on('mouseout', function() {
                 // 마우스가 path에서 벗어날 때 팝업 숨기기
@@ -124,5 +188,119 @@ function drawMap(target) {
         projection.translate(d3.event.translate).scale(d3.event.scale);
         states.selectAll('path').attr('d', path);
         labels.attr('transform', translateTolabel);
+    }
+
+    // 클릭한 지역에 대한 이미지 및 설명을 표시하는 함수
+    function displayImagePopup(name) {
+        if(name =="서울특별시"){
+            imageName = "a1";
+        };
+        if(name =="경기도"){
+            imageName = "a2";
+        };
+        if(name =="인천광역시"){
+            imageName = "a3";
+        };
+        if(name =="강원도"){
+            imageName = "a4";
+        };
+        if(name =="세종특별자치시"){
+            imageName = "a5";
+        };
+        if(name =="충청북도"){
+            imageName = "a6";
+        };
+        if(name =="충청남도"){
+            imageName = "a7";
+        };
+        if(name =="대전광역시"){
+            imageName = "a8";
+        };
+        if(name =="대구광역시"){
+            imageName = "a9";
+        };
+        if(name =="전라북도"){
+            imageName = "a10";
+        };
+        if(name =="전라남도"){
+            imageName = "a11";
+        };
+        if(name =="광주광역시"){
+            imageName = "a12";
+        };
+        if(name =="경상북도"){
+            imageName = "a13";
+        };
+        if(name =="경상남도"){
+            imageName = "a14";
+        };
+        if(name =="울산광역시"){
+            imageName = "a15";
+        };
+        if(name =="부산광역시"){
+            imageName = "a16";
+        };
+        if(name =="제주특별자치도"){
+            imageName = "a17";
+        };
+        var imagePath = 'img/'+imageName+'.png';
+        var descriptionText = getDescription(name);
+
+        // 이미지 소스 및 크기 설정
+        image.attr('src', imagePath);
+
+        // 설명 내용 설정
+        description.html(descriptionText);
+
+        // 이미지 표시 컨테이너를 보이게 설정
+        imagePopup.style('display', 'block');
+    }
+
+    // 지역 이름에 따른 이미지 파일 이름 가져오기
+    function getImageName(name) {
+        var nameLowerCase = name.toLowerCase().replace(/\s/g, ''); // 공백 및 대문자 제거
+        return 'a' + (json.features.findIndex(f => f.properties.name === name) + 1);
+    }
+
+    // 지역 이름에 따른 설명 가져오기
+    function getDescription(name) {
+        switch (name) {
+            case "서울특별시":
+                return '서울에 대한 설명입니다.';
+            case "경기도":
+                return '경기에 대한 설명입니다.';
+            case "인천광역시":
+                return '인천에 대한 설명입니다.';
+            case "강원도":
+                return '강원에 대한 설명입니다.';
+            case "세종특별자치시":
+                return '세종에 대한 설명입니다.';
+            case "충청북도":
+                return '충북에 대한 설명입니다.';
+            case "충청남도":
+                return '충남에 대한 설명입니다.';
+            case "대전광역시":
+                return '인천에 대한 설명입니다.';
+            case "대구광역시":
+                return '대구에 대한 설명입니다.';
+            case "전라북도":
+                return '전북에 대한 설명입니다.';
+            case "전라남도":
+                return '전남에 대한 설명입니다.';
+            case "광주광역시":
+                return '광주에 대한 설명입니다.';
+            case "경상북도":
+                return '경북에 대한 설명입니다.';
+            case "경상남도":
+                return '경남에 대한 설명입니다.';
+            case "울산광역시":
+                return '울산에 대한 설명입니다.';
+            case "부산광역시":
+                return '부산에 대한 설명입니다.';
+            case "제주특별자치도":
+                return '제주에 대한 설명입니다.';
+            default:
+                return '기본 설명입니다.';
+        }
     }
 }

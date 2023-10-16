@@ -19,15 +19,17 @@ div {
     position: relative;
 }
 
-
+#states {
+	fill: #fff;
+}
 #states path {
-	fill: #585858;
-	stroke: #000000;
+	fill: #f5f5f7;
+	stroke: #a86eeb;
 	stroke-width: 1.5px;
 }
 
 #states path:hover {
-	fill: #009300;
+	fill: #66e7dd;
 }
 
 #states .active {
@@ -45,12 +47,12 @@ div {
 #states text {
 	cursor: pointer;
 	font-size: 12px;
-	fill: #fff;
+	fill: #030303;
 }
 
 .popup {
-	background-color: #fff;
-	border: 1px solid #ccc;
+	background-color: #b6cfc7;
+	border: 1px solid #51cfba;
 	padding: 10px;
 	display: none;
 }

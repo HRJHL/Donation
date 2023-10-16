@@ -26,7 +26,7 @@ function drawMap(mapTarget, imageTarget) {
 
     // 이미지를 표시할 요소 선택
     var image = imagePopup.append('img')
-        .style('width', '750px'); // 이미지 크기 조정
+        .style('width', '800px'); // 이미지 크기 조정
 
     // 설명을 표시할 요소 선택
     var description = imagePopup.append('div')
@@ -164,6 +164,9 @@ function drawMap(mapTarget, imageTarget) {
                 return d.properties.name;
             });
     });
+    var imagePath = 'img/ALR.png';
+    image.attr('src', imagePath);
+    imagePopup.style('display', 'block');
 
     // 텍스트 위치 조절 - 하드코딩으로 위치 조절을 했습니다.
     function translateTolabel(d) {
@@ -280,7 +283,7 @@ function drawMap(mapTarget, imageTarget) {
             case "충청남도":
                 return '충남에 대한 설명입니다.';
             case "대전광역시":
-                return '인천에 대한 설명입니다.';
+                return '대전에 대한 설명입니다.';
             case "대구광역시":
                 return '대구에 대한 설명입니다.';
             case "전라북도":

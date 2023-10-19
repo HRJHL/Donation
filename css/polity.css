@@ -19,3 +19,25 @@ li a:hover {
     background-color: #cd853f;
     color: white;
 }
+select {
+    box-sizing: border-box;
+    width: 100px;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  option {
+    padding: 4px;
+    font-size: 14px;
+    color: #fff;
+    background: #272822;
+  }
+
+  button {
+    top:50%;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+  }

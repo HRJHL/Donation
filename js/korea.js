@@ -28,16 +28,12 @@ function drawMap(mapTarget, imageTarget) {
     var image = imagePopup.append('img')
         .style('width', '700px'); // 이미지 크기 조정
 
-    var imagePopup2 = imagePopup.append('div')
-        .attr('class', 'image-popup')
-        .style('display', 'none')
-        .style('position', 'relative');
     
-    var image2 = imagePopup2.append('img')
-        .style('width', '700px'); // 이미지 크기 조정 
 
     var description = imagePopup.append('div')
-        .attr('class', 'description');
+        .attr('class', 'description')
+        .style('background-color','gray')
+        .style('font-size', '30px');
 
     var projection = d3.geo
         .mercator()
@@ -198,12 +194,10 @@ function drawMap(mapTarget, imageTarget) {
     }
 
     var imagePath = 'img/ALR.png';
+    descriptionText = '정치후원금 분석<br>-지역을 클릭하여 상세한 내용을 볼 수 있습니다-'
     image.attr('src', imagePath);
+    description.html(descriptionText);
     imagePopup.style('display', 'block');
-    var imagePath2 = 'img/opwa.png';
-    image2.attr('src', imagePath2);
-    imagePopup2.style('display', 'block');
-
     
     function displayImagePopup(name) {
         if(name =="서울특별시"){
@@ -280,41 +274,41 @@ function drawMap(mapTarget, imageTarget) {
     function getDescription(name) {
         switch (name) {
             case "서울특별시":
-                return '서울에 대한 설명입니다.';
+                return '서울특별시<br>      ⁃	    인구: 9,407,540명(2023)<br>⁃      gdp: $3,968억(2021)<br>⁃	1인당 gdp: $41,763(2021)';
             case "경기도":
-                return '경기에 대한 설명입니다.';
+                return '경기도<br>-     인구: 13,626,339명(2023)<br>-     gdp: $4,433억(2021)<br>-    1인당 gdp: $32,570(2021)';
             case "인천광역시":
-                return '인천에 대한 설명입니다.';
+                return '인천광역시<br>      ⁃    인구: 2,987,918명<br>    ⁃ 	gdp: $823억<br>     ⁃    1인당 gdp: $28,000';
             case "강원도":
-                return '강원에 대한 설명입니다.';
+                return '강원특별자치도<br>-     인구: 1,530,712명<br>-    gdp: $449억(2020)<br>-     1인당 gdp: $29,674(2020)';
             case "세종특별자치시":
-                return '세종에 대한 설명입니다.';
+                return '세종특별자치시<br>⁃	    인구: 385,932명<br>⁃      gdp: $116억<br>⁃    1인당 gdp: $30,116';
             case "충청북도":
-                return '충북에 대한 설명입니다.';
+                return '충청북도<br>⁃	    인구: 1,594,326명<br>⁃      gdp: $628억(2021)<br>⁃    1인당 gdp: $38,528(2021)';
             case "충청남도":
-                return '충남에 대한 설명입니다.';
+                return '충청남도<br>⁃	    인구: 2,127,630명<br>⁃      gdp: $1,048억(2021)<br>⁃    1인당 gdp: $48,150(2021)';
             case "대전광역시":
-                return '대전에 대한 설명입니다.';
+                return '대전광역시<br>⁃	    인구: 1,444,595명<br>⁃	gdp: $390억<br>⁃	1인당 gdp: $26,387';
             case "대구광역시":
-                return '대구에 대한 설명입니다.';
+                return '대구광역시<br>⁃	    인구: 2,377,801명<br>⁃	gdp: $511억<br>⁃	1인당 gdp: $21,443';
             case "전라북도":
-                return '전북에 대한 설명입니다.';
+                return '전라북도<br>⁃       인구: 1,758,661명<br>⁃      gdp: $466억(2021)<br>⁃      1인당 gdp: $26,002(2021)';
             case "전라남도":
-                return '전남에 대한 설명입니다.';
+                return '전라남도<br>⁃	인구: 1,807,295명<br>⁃	gdp: $742억(2021)<br>⁃	1인당 gdp: $41,643(2021)';
             case "광주광역시":
-                return '광주에 대한 설명입니다.';
+                return '광주광역시<br>⁃	인구: 1,422,999명<br>⁃	gdp: $365억<br>⁃	1인당 gdp: $24,884';
             case "경상북도":
-                return '경북에 대한 설명입니다.';
+                return '경상북도<br>⁃	인구: 2,559,924명<br>⁃	gdp: $948억(2021)<br>⁃	1인당 gdp: $35,923(2021)';
             case "경상남도":
-                return '경남에 대한 설명입니다.';
+                return '경상남도<br>⁃	인구: 3,257,009명<br>⁃	gdp: $942억(2021)<br>⁃	1인당 gdp: $28,416(2021)';
             case "울산광역시":
-                return '울산에 대한 설명입니다.';
+                return '울산광역시<br>⁃	    인구: 1,104,167명<br>⁃	gdp: $653억<br>⁃	1인당 gdp: $58,153';
             case "부산광역시":
-                return '부산에 대한 설명입니다.';
+                return '부산광역시<br>⁃   인구: 3,300,836명 <br>⁃   gdp: $829억<br>⁃    1인당 gdp: $24,940';
             case "제주특별자치도":
-                return '제주에 대한 설명입니다.';
+                return '제주특별자치도<br>⁃   인구: 676,317명 <br>⁃   gdp: $168억(2021)<br>⁃    1인당 gdp: $25,051(2021)';
             default:
-                return '기본 설명입니다.';
+                return '...';
         }
     }
 }

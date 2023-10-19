@@ -26,9 +26,16 @@ function drawMap(mapTarget, imageTarget) {
 
     // 이미지를 표시할 요소 선택
     var image = imagePopup.append('img')
-        .style('width', '800px'); // 이미지 크기 조정
+        .style('width', '700px'); // 이미지 크기 조정
 
-    // 설명을 표시할 요소 선택
+    var imagePopup2 = imagePopup.append('div')
+        .attr('class', 'image-popup')
+        .style('display', 'none')
+        .style('position', 'relative');
+    
+    var image2 = imagePopup2.append('img')
+        .style('width', '700px'); // 이미지 크기 조정 
+
     var description = imagePopup.append('div')
         .attr('class', 'description');
 
@@ -164,9 +171,6 @@ function drawMap(mapTarget, imageTarget) {
                 return d.properties.name;
             });
     });
-    var imagePath = 'img/ALR.png';
-    image.attr('src', imagePath);
-    imagePopup.style('display', 'block');
 
     // 텍스트 위치 조절 - 하드코딩으로 위치 조절을 했습니다.
     function translateTolabel(d) {
@@ -193,7 +197,14 @@ function drawMap(mapTarget, imageTarget) {
         labels.attr('transform', translateTolabel);
     }
 
-    // 클릭한 지역에 대한 이미지 및 설명을 표시하는 함수
+    var imagePath = 'img/ALR.png';
+    image.attr('src', imagePath);
+    imagePopup.style('display', 'block');
+    var imagePath2 = 'img/opwa.png';
+    image2.attr('src', imagePath2);
+    imagePopup2.style('display', 'block');
+
+    
     function displayImagePopup(name) {
         if(name =="서울특별시"){
             imageName = "a1";

@@ -17,6 +17,7 @@ div {
 #image-container {
     overflow: auto; /* 이미지가 넘칠 경우 스크롤 표시 */
     position: relative;
+	border: 5px solid #51cfba;
 }
 
 #states {
